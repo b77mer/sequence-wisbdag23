@@ -338,19 +338,19 @@ set /A pD=%pD%+1
 if %pD% GTR %max% (
 	set pD=0
 	set /A pC=%pC%+1
-	if %pD% GTR %max% & if %pC% GTR %max% (
+	if %pC% GTR %max% (
 		set pD=0
 		set pC=0
 		set /A pB=%pB%+1
-		if %pD% GTR %max% & if %pC% GTR %max% & if %pB% GTR %max% (
+		if %pB% GTR %max% (
 			set pD=0
 			set pC=0
 			set pB=0
 			set /A pA=%pA%+1
+			if %pA% GTR %max% goto finished.
 		)
 	)
 )
-if %pD% GTR %max% & if %pC% GTR %max% & if %pB% GTR %max% & if %pA% GTR %max% goto finished.
 
 :finished
 echo Finished. Longest streak was %w%.
