@@ -3,19 +3,7 @@ cd %appdata%
 if not exist sequence mkdir sequence
 cd sequence
 del run.txt
-set /P sLength=sLength: 
-if %sLength%==2 goto sLength2
-if %sLength%==3 goto sLength3
-if %sLength%==4 goto sLength4
-echo Incorrect number, press any button to exit.
-pause >nul
-exit
-
-:sLength2
-echo
-
-:sLength3
-echo
+goto sLength4
 
 :sLength4
 cls
