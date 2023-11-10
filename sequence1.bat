@@ -1,10 +1,7 @@
 @echo off
 color 0a
 cd %appdata%\sequence
-del colCount.txt
 del run.txt
-del run2.txt
-del run3.txt
 set max=100
 set bin=0000
 set pA=0
@@ -14,6 +11,8 @@ set pD=0
 set w=0
 set bin=0000
 set sLength=4
+set its=0
+set percent=0
 goto sLength4
 
 :sLength4
@@ -36,7 +35,8 @@ set nD=%nD2%
 goto sL5
 
 :sL4
-echo _____________
+::echo _____________
+::echo %pA%  %pB%  %pC%  %pD%
 set colCount=0
 set rowCount=0
 set nA=%pA%
@@ -46,7 +46,6 @@ set nD=%pD%
 goto sL5
 
 :sL5
-echo %nA%  %nB%  %nC%  %nD% >>run2.txt
 if %rowCount%==0 (
 	set sA=%nA%
 	set sB=%nB%
@@ -107,16 +106,21 @@ goto check4
 
 :check4
 set /A nSum=%nA2%+%nB2%+%nC2%+%nD2%
-echo %nA2%  %nB2%  %nC2%  %nD2%
+::echo %nA2%  %nB2%  %nC2%  %nD2%
 if %nSum%==0 goto finish4
 goto sL3
 
 :finish4
 if %colCount% GEQ %w% (
-	echo %pA%  %pB%  %pC%  %pD% >run3.txt
+	echo %pA%  %pB%  %pC%  %pD% >run.txt
 	set w=%colCount%
 )
-echo %colCount% >>colCount.txt
+set /A its=%its%+1
+set /A percent=%its%/1000000
+cls
+echo Iterarions had: %its%
+echo %percent%%% done.
+::echo %colCount% >>colCount.txt
 goto checkr
 
 :checkr
