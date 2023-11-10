@@ -3,6 +3,7 @@ cd %appdata%
 if not exist sequence mkdir sequence
 cd sequence
 del run.txt
+set sLength=4
 goto sLength4
 
 :sLength4
